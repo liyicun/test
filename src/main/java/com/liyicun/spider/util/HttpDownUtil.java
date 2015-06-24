@@ -39,6 +39,7 @@ public class HttpDownUtil {
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			System.out.println(httpUrl);
 			return 0l;
 		}
 		try {

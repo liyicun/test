@@ -62,6 +62,21 @@ public class FileUtil {
 		}
 	}
 
+	public static boolean writer(File file, String con) {
+		try {
+			File pfile = file.getParentFile();
+			if (pfile != null && !pfile.exists()) {
+				pfile.mkdirs();
+			}
+			FileWriter writer = new FileWriter(file);
+			writer.write(con);
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
 	public static void main(String[] args) {
 		writer(new ArrayList<String>(), "ok.txt");
 	}

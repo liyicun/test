@@ -26,6 +26,8 @@ public class KuaishouSong {
 
 	private String link;
 
+	private String linkMd5;
+
 	private String path;
 
 	private String date;
@@ -110,5 +112,13 @@ public class KuaishouSong {
 			suffix = mp4.substring(a);
 		}
 		this.mp4 = mp4;
+	}
+
+	public String getLinkMd5() {
+		return linkMd5;
+	}
+
+	public void setLinkMd5(String linkMd5) {
+		this.linkMd5 = linkMd5;
 	}
 }
