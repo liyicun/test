@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -47,6 +48,7 @@ public class FileUtil {
 			}
 			OutputStream out = new FileOutputStream(file);
 			Writer writer = new OutputStreamWriter(out);
+			// FileWriter writer = new FileWriter(file, true);
 			BufferedWriter bw = new BufferedWriter(writer);
 			for (String str : datas) {
 				bw.write(str);

@@ -2,6 +2,26 @@ package com.liyicun.spider.kuaishou;
 
 public class KuaishouSong {
 
+	private String uid;
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
+	private String fullname;
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
 	private String title;
 
 	private String link;
@@ -19,7 +39,7 @@ public class KuaishouSong {
 	private long mp4Length;
 
 	public String getPath() {
-		path = md5 + suffix;
+		path = "data/kuaishou/file/" + md5 + suffix;
 		return path;
 	}
 

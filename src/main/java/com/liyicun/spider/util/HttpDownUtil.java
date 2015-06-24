@@ -27,6 +27,9 @@ public class HttpDownUtil {
 		File sf = new File(saveFile);
 		if (sf.exists())
 			return sf.length();
+		if (sf.getParentFile() != null && !sf.getParentFile().exists()) {
+			sf.getParentFile().mkdirs();
+		}
 		// 下载网络文件
 		long bytesum = 0;
 		int byteread = 0;
