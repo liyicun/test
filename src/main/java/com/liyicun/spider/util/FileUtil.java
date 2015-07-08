@@ -12,7 +12,10 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class FileUtil {
@@ -78,6 +81,9 @@ public class FileUtil {
 	}
 
 	public static void main(String[] args) {
-		writer(new ArrayList<String>(), "ok.txt");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd"); 
+		//
+		System.out.println(formatter.format(new Date()));
+		//writer(new ArrayList<String>(), "ok.txt");
 	}
 }

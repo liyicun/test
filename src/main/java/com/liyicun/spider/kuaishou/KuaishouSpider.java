@@ -1,9 +1,13 @@
 package com.liyicun.spider.kuaishou;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -50,6 +54,8 @@ public class KuaishouSpider {
 			}
 		}
 		FileUtil.writer(datas, "data/kuaishou/log/" + file + ".log");
+		FileUtils.copyFile(new File(file), new File("data/kuaishou/log/" + file));
+		FileUtils.moveDirectory(new File("data/kuaishou"), new File("data/kuaishou" + new SimpleDateFormat("yyyyMMdd").format(new Date())));
 		System.out.println("end");
 	}
 }
