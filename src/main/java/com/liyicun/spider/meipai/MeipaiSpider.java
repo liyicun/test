@@ -67,6 +67,7 @@ public class MeipaiSpider {
 			URL userURL = new URL(url);
 			String path = userURL.getPath();
 			String uid = path.substring(path.lastIndexOf("/") + 1);
+			System.out.println(path + "----------" + uid);
 			for (int page = 1;; page++) {
 				String spiderUrl = buildURL(page, uid);
 				System.out.println(url + "\t" + spiderUrl);
@@ -91,10 +92,11 @@ public class MeipaiSpider {
 						song.setFileLength(HttpDownUtil.httpDownload(song.getVideo(), song.getPath(), song.getLink()));
 						datas.add(song.getMd5() + "|" + song.getPath() + "|" + song.getDate() + "|" + song.getFileLength() + "|" + song.getLink() + "|" + song.getTitle() + "|" + song.getNameAll() + "|" + song.getVideo());
 						try {
-							Thread.sleep(1000);
+							// Thread.sleep(1000);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+						System.out.println("----------" + data.getString("url"));
 					}
 					if (medias.isEmpty()) {
 						break;
@@ -103,17 +105,17 @@ public class MeipaiSpider {
 					e.printStackTrace();
 				}
 				try {
-					Thread.sleep(1000);
+					// Thread.sleep(1000);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 			FileUtil.writer(datas, "data/meipai/log/" + uid + ".ok.log");
-			FileUtils.copyFile(new File(file), new File("data/meipai/log/" + file));
-			FileUtils.moveDirectory(new File("data/meipai"), new File("data/meipai" + new SimpleDateFormat("yyyyMMdd").format(new Date())));
 			datas.clear();
 		}
 		meipaiSpider.destroyApacheHttpClient();
+		FileUtils.copyFile(new File(file), new File("data/meipai/log/" + file));
+		FileUtils.moveDirectory(new File("data/meipai"), new File("data/meipai" + new SimpleDateFormat("yyyyMMdd").format(new Date())));
 		System.out.println("end");
 	}
 
