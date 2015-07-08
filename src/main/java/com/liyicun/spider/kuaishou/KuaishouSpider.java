@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -50,6 +51,7 @@ public class KuaishouSpider {
 			}
 		}
 		FileUtil.writer(datas, "data/kuaishou/log/" + file + ".log");
+		FileUtils.copyFile(new File(file), new File("data/kuaishou/log/" + file));
 		System.out.println("end");
 	}
 }
