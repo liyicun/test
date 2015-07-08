@@ -19,7 +19,7 @@ public class KuaishouSpider {
 
 	public static void main(String[] args) throws Exception {
 		String file = "kuaishou.txt";
-		List<String> list = FileUtil.reader(file);
+		List<String> list = FileUtils.readLines(new File(file), "UTF-8");
 		List<String> datas = new ArrayList<String>();
 		int num = 1;
 		for (String url : list) {

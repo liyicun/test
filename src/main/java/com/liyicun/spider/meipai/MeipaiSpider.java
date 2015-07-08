@@ -61,7 +61,7 @@ public class MeipaiSpider {
 		meipaiSpider.initApacheHttpClient();
 		String file = "meipai.txt";
 		// http://www.meipai.com/user/37766057
-		List<String> list = FileUtil.reader(file);
+		List<String> list = FileUtils.readLines(new File(file), "UTF-8");
 		List<String> datas = new ArrayList<String>();
 		for (String url : list) {
 			URL userURL = new URL(url);
