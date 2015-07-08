@@ -1,12 +1,16 @@
 package com.liyicun.spider.meipai;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -86,6 +90,11 @@ public class MeipaiSpider {
 						} catch (Exception e) {}
 						song.setFileLength(HttpDownUtil.httpDownload(song.getVideo(), song.getPath(), song.getLink()));
 						datas.add(song.getMd5() + "|" + song.getPath() + "|" + song.getDate() + "|" + song.getFileLength() + "|" + song.getLink() + "|" + song.getTitle() + "|" + song.getNameAll() + "|" + song.getVideo());
+						try {
+							Thread.sleep(1000);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 					if (medias.isEmpty()) {
 						break;
@@ -100,6 +109,8 @@ public class MeipaiSpider {
 				}
 			}
 			FileUtil.writer(datas, "data/meipai/log/" + uid + ".ok.log");
+			FileUtils.copyFile(new File(file), new File("data/meipai/log/" + file));
+			FileUtils.moveDirectory(new File("data/meipai"), new File("data/meipai" + new SimpleDateFormat("yyyyMMdd").format(new Date())));
 			datas.clear();
 		}
 		meipaiSpider.destroyApacheHttpClient();
